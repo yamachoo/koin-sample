@@ -6,6 +6,7 @@ import io.ktor.server.netty.*
 import com.example.plugins.*
 import io.ktor.application.*
 import io.ktor.features.*
+import org.koin.ksp.generated.defaultModule
 import org.koin.ktor.ext.Koin
 import org.koin.logger.SLF4JLogger
 
@@ -16,6 +17,7 @@ fun main() {
         install(Koin) {
             SLF4JLogger()
             modules(helloAppModule)
+            defaultModule()
         }
 
         configureRouting()
