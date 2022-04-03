@@ -6,6 +6,7 @@ val koin_ksp_version: String by project
 val kotest_version: String by project
 val kotest_ktor_version: String by project
 val kotest_koin_version: String by project
+val mockk_version: String by project
 
 plugins {
     application
@@ -45,6 +46,7 @@ dependencies {
     testImplementation("io.kotest:kotest-property:$kotest_version")
     testImplementation("io.kotest.extensions:kotest-assertions-ktor:$kotest_ktor_version")
     testImplementation("io.kotest.extensions:kotest-extensions-koin:$kotest_koin_version")
+    testImplementation("io.mockk:mockk:$mockk_version")
 }
 
 tasks.withType<Test>().configureEach {
