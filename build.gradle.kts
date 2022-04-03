@@ -3,6 +3,9 @@ val kotlin_version: String by project
 val logback_version: String by project
 val koin_version: String by project
 val koin_ksp_version: String by project
+val kotest_version: String by project
+val kotest_ktor_version: String by project
+val kotest_koin_version: String by project
 
 plugins {
     application
@@ -36,5 +39,14 @@ dependencies {
     implementation("io.insert-koin:koin-annotations:$koin_ksp_version")
     ksp("io.insert-koin:koin-ksp-compiler:$koin_ksp_version")
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("io.insert-koin:koin-test:$koin_version")
+    testImplementation("io.kotest:kotest-runner-junit5:$kotest_version")
+    testImplementation("io.kotest:kotest-assertions-core:$kotest_version")
+    testImplementation("io.kotest:kotest-property:$kotest_version")
+    testImplementation("io.kotest.extensions:kotest-assertions-ktor:$kotest_ktor_version")
+    testImplementation("io.kotest.extensions:kotest-extensions-koin:$kotest_koin_version")
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
